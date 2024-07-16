@@ -1198,3 +1198,25 @@ strong {
     justify-content: center;
     align-items: center;
 }
+
+.white-popup{
+    position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.click-me{
+    width: 200px !important;
+    height: 200px !important;
+    POSITION: relative;
+    margin-top: -150px;
+}
+
+.popup{
+    cursor:pointer;
+}
