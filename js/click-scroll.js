@@ -1,12 +1,14 @@
 //jquery-click-scroll
 //by syamsul'isul' Arifin
 
-var sectionArray = [1, 2, 3, 4, 5];
+var sectionArray = $('.navbar-nav .click-scroll').map(function(){
+    return $(this).attr('href');
+}).get();
 
 $.each(sectionArray, function(index, value){
           
      $(document).scroll(function(){
-         var offsetSection = $('#' + 'section_' + value).offset().top - 90;
+         var offsetSection = $(value).offset().top - 90;
          var docScroll = $(document).scrollTop();
          var docScroll1 = docScroll + 1;
          
@@ -21,13 +23,25 @@ $.each(sectionArray, function(index, value){
      });
     
     $('.click-scroll').eq(index).click(function(e){
-        var offsetClick = $('#' + 'section_' + value).offset().top - 90;
+        var offsetClick = $(value).offset().top - 90;
         e.preventDefault();
+        var menu = bootstrap.Collapse.getInstance(document.getElementById('navbarNav'));
+        if (menu) {
+            menu.hide();
+        }
         $('html, body').animate({
             'scrollTop':offsetClick
         }, 300)
     });
     
+});
+
+// The last section is too short to reach the top of the viewport.
+$(document).scroll(function(){
+    if ($(window).scrollTop() + $(window).height() >= $(document).height() - 2) {
+        $('.navbar-nav .nav-item .nav-link').removeClass('active').addClass('inactive');
+        $('.navbar-nav .nav-item .nav-link').last().addClass('active').removeClass('inactive');
+    }
 });
 
 $(document).ready(function(){

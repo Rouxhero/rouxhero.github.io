@@ -21,18 +21,9 @@
           // `this.st.el` fait référence à l'élément cliqué (jQuery object)
           var clickedElement = this.st.el[0];
           $("#dynamic-content").html(modalContent[clickedElement.id]);
-          clearInterval(window.clickMe);
-          $("#clickMe").hide();
       },
       }
     });
-
-    // clickMe show/hide animation
-    window.clickMe = setInterval(function(){
-      $(".click-me").animate({opacity: 0}, 2000, function(){
-        $(this).animate({opacity: 1}, 2000);
-      });
-    }, 2000);
 
 
     // CUSTOM LINK
