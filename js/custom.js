@@ -51,7 +51,7 @@
 
 
 
-const modalContent = {
+const modalContentFr = {
     python: `
     <h2>Python</h2>
 
@@ -177,3 +177,36 @@ const modalContent = {
     `
 
 }
+
+const skillLevel = function(level) {
+    return '🟡'.repeat(level) + '⚪'.repeat(5 - level);
+};
+
+const modalEntryEn = function(title, text, level, subtitle) {
+    return `
+    <h2>${title}</h2>
+    ${subtitle ? `<span>${subtitle}</span>` : ''}
+
+    <p> ${text} </p>
+    <span><i> Proficiency: </i></span>
+    <pre>
+    ${skillLevel(level)}
+    </pre>
+    `;
+};
+
+const modalContentEn = {
+    python: modalEntryEn('Python', 'Python is my favourite programming language. I use it in my personal and professional projects.', 4),
+    javascript: modalEntryEn('JavaScript', 'JavaScript has become essential in development, and it is a language I know well.', 4),
+    java: modalEntryEn('Java', 'I learned Java during my studies and have a solid command of it.', 3),
+    html: modalEntryEn('HTML', 'HTML/CSS is rarely written by hand anymore, but it is still worth mastering.', 4),
+    c: modalEntryEn('C/C++', 'I learned C/C++ during my studies and have some working knowledge of it.', 2),
+    php: modalEntryEn('PHP', 'I worked with PHP for a while, including CMSs such as PrestaShop.', 3),
+    windows: modalEntryEn('Windows', 'I am comfortable with the Windows environment, whether for installation, configuration or everyday use.', 4),
+    linux: modalEntryEn('Linux', 'I am comfortable with the Linux environment, whether for installation, configuration or everyday use. I am used to distributions such as Ubuntu, Mint and Kali.', 4),
+    server: modalEntryEn('Servers', 'I run several servers and am comfortable handling, managing and configuring them, as well as DNS management.', 3),
+    emf: modalEntryEn('EMF', 'I often work with EMF for modeling and code generation.', 3, '(Eclipse Modeling Framework)'),
+    react: modalEntryEn('React', 'React is a framework I often use to develop my web applications.', 3)
+};
+
+const modalContent = document.documentElement.lang === 'en' ? modalContentEn : modalContentFr;
